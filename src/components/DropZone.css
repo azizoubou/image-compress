@@ -1,0 +1,57 @@
+.drop-zone {
+  width: 100%;
+  max-width: 600px;
+  height: 300px;
+  border: 2px dashed #cbd5e1;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  margin: 2rem auto;
+}
+
+.drop-zone:hover, .drop-zone.dragging {
+  border-color: var(--primary);
+  background: rgba(99, 102, 241, 0.05);
+  transform: translateY(-2px);
+}
+
+.drop-zone-content {
+  text-align: center;
+  color: var(--text-main);
+}
+
+.drop-zone .icon {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.drop-zone h3 {
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.drop-zone p {
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.drop-zone .hint {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 1rem;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.bounce {
+  animation: bounce 0.6s infinite;
+}
