@@ -19,7 +19,7 @@ const SEO = ({ lang }: { lang: Language }) => {
 
   return (
     <Helmet>
-      <html lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'} />
+      <html lang={lang} dir="ltr" />
       <title>{t.metaTitle}</title>
       <meta name="description" content={t.metaDescription} />
       
@@ -414,18 +414,6 @@ function App() {
         <Route path="/" element={<Navigate to="/de" replace />} />
         
         {/* Language-based Routing */}
-        <Route path="/:lang/*" element={<AppContent />} />
-        
-        {/* Fallback for unknown routes */}
-        <Route path="*" element={<Navigate to="/de" replace />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
-
-
-export default App;
-based Routing */}
         <Route path="/:lang/*" element={<AppContent />} />
         
         {/* Fallback for unknown routes */}

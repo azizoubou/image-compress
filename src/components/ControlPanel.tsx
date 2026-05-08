@@ -1,5 +1,5 @@
 import React from 'react';
-import { Settings, ShieldCheck } from 'lucide-react';
+import { Settings, Shield as ShieldCheck } from 'lucide-react';
 import type { CompressionSettings } from '../hooks/useCompression';
 import './ControlPanel.css';
 
