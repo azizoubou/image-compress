@@ -15,7 +15,7 @@ import './App.css';
 const SEO = ({ lang }: { lang: Language }) => {
   const t = translations[lang];
   const location = useLocation();
-  const canonicalUrl = `https://optipress.io${location.pathname}`;
+  const canonicalUrl = `https://bilder-verkleinern.net${location.pathname}`;
 
   return (
     <Helmet>
@@ -28,30 +28,31 @@ const SEO = ({ lang }: { lang: Language }) => {
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:title" content={t.metaTitle} />
       <meta property="og:description" content={t.metaDescription} />
-      <meta property="og:image" content="https://optipress.io/og-image.png" />
+      <meta property="og:image" content="https://bilder-verkleinern.net/og-image.png" />
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={canonicalUrl} />
       <meta property="twitter:title" content={t.metaTitle} />
       <meta property="twitter:description" content={t.metaDescription} />
-      <meta property="twitter:image" content="https://optipress.io/og-image.png" />
+      <meta property="twitter:image" content="https://bilder-verkleinern.net/og-image.png" />
 
       <link rel="canonical" href={canonicalUrl} />
       
       {/* Language Alternates for SEO */}
-      <link rel="alternate" hrefLang="en" href="https://optipress.io/en" />
-      <link rel="alternate" hrefLang="ar" href="https://optipress.io/ar" />
-      <link rel="alternate" hrefLang="fr" href="https://optipress.io/fr" />
-      <link rel="alternate" hrefLang="x-default" href="https://optipress.io/en" />
+      <link rel="alternate" hrefLang="de" href="https://bilder-verkleinern.net/de" />
+      <link rel="alternate" hrefLang="en" href="https://bilder-verkleinern.net/en" />
+      <link rel="alternate" hrefLang="ar" href="https://bilder-verkleinern.net/ar" />
+      <link rel="alternate" hrefLang="fr" href="https://bilder-verkleinern.net/fr" />
+      <link rel="alternate" hrefLang="x-default" href="https://bilder-verkleinern.net/de" />
     </Helmet>
   );
 };
 
 // Main Application Content
 const AppContent = () => {
-  const { lang = 'en' } = useParams<{ lang: string }>();
-  const currentLang = (['en', 'ar', 'fr'].includes(lang) ? lang : 'en') as Language;
+  const { lang = 'de' } = useParams<{ lang: string }>();
+  const currentLang = (['de', 'en', 'ar', 'fr'].includes(lang) ? lang : 'de') as Language;
   const t = translations[currentLang];
   const navigate = useNavigate();
   const location = useLocation();
@@ -71,7 +72,7 @@ const AppContent = () => {
     const schemaData = {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "name": "OptiPress",
+      "name": t.brand,
       "operatingSystem": "Any",
       "applicationCategory": "MultimediaApplication",
       "offers": {
@@ -142,14 +143,14 @@ const AppContent = () => {
       }
     } else {
       navigator.clipboard.writeText(window.location.href);
-      alert('Link copied to clipboard!');
+      alert(t.copiedToClipboard);
     }
   };
 
   const handleCopyLink = () => {
     if (result) {
       navigator.clipboard.writeText(result.compressedUrl);
-      alert('Download link copied!');
+      alert(t.downloadLinkCopied);
     }
   };
 
@@ -159,7 +160,7 @@ const AppContent = () => {
   };
 
   return (
-    <div className={`app-container ${currentLang === 'ar' ? 'rtl' : ''}`}>
+    <div className="app-container">
       <SEO lang={currentLang} />
       
       <nav className="top-nav">
@@ -170,9 +171,8 @@ const AppContent = () => {
         <div className="nav-controls">
           <div className="lang-nav">
             <Globe size={18} />
+            <button className={currentLang === 'de' ? 'active' : ''} onClick={() => changeLanguage('de')}>DE</button>
             <button className={currentLang === 'en' ? 'active' : ''} onClick={() => changeLanguage('en')}>EN</button>
-            <button className={currentLang === 'fr' ? 'active' : ''} onClick={() => changeLanguage('fr')}>FR</button>
-            <button className={currentLang === 'ar' ? 'active' : ''} onClick={() => changeLanguage('ar')}>AR</button>
           </div>
           <button className="share-btn-nav" onClick={handleShare}>
             <Share2 size={18} />
@@ -221,7 +221,9 @@ const AppContent = () => {
                       maxSize: t.maxFileSize,
                       maxWidth: t.maxWidthHeight,
                       compress: t.compressBtn,
-                      compressing: t.compressingBtn
+                      compressing: t.compressingBtn,
+                      forumMode: t.forumMode,
+                      forumModeDesc: t.forumModeDesc
                     }}
                   />
                 </div>
@@ -249,7 +251,7 @@ const AppContent = () => {
                 </div>
               )}
 
-              {error && <div className="error-message">{error}</div>}
+              {error && <div className="error-message">{t[error as keyof typeof t] || error}</div>}
 
               <section className="features-grid">
                 <div className="feature-card">
@@ -312,10 +314,14 @@ const AppContent = () => {
         
         <Route path="/privacy" element={
           <div className="content-page">
-            <Link to={`/${currentLang}`} className="back-btn">← Back</Link>
+            <Link to={`/${currentLang}`} className="back-btn">← {t.back}</Link>
             <section className="legal-section">
               <h1>{t.privacyPolicy}</h1>
               <p>{t.privacyPolicyContent}</p>
+              <div className="privacy-highlight">
+                <strong>{t.privacyPolicyLocal}</strong>
+              </div>
+              <p>{t.privacyPolicyServer}</p>
               <p>{t.privacyStatement}</p>
             </section>
           </div>
@@ -323,17 +329,26 @@ const AppContent = () => {
         
         <Route path="/terms" element={
           <div className="content-page">
-            <Link to={`/${currentLang}`} className="back-btn">← Back</Link>
+            <Link to={`/${currentLang}`} className="back-btn">← {t.back}</Link>
             <section className="legal-section">
               <h1>{t.termsOfService}</h1>
               <p>{t.termsContent}</p>
+              <hr className="my-8" />
+              <h2>{t.impressumTitle}</h2>
+              <p>{t.impressumContent}</p>
+              <p>
+                <strong>{t.impressumOwner}</strong><br />
+                {t.impressumAddress}
+              </p>
+              <h3>{t.impressumDisclaimerTitle}</h3>
+              <p>{t.impressumDisclaimer}</p>
             </section>
           </div>
         } />
         
         <Route path="/contact" element={
           <div className="content-page">
-            <Link to={`/${currentLang}`} className="back-btn">← Back</Link>
+            <Link to={`/${currentLang}`} className="back-btn">← {t.back}</Link>
             <section className="contact-section">
               <h1>{t.contactUs}</h1>
               <div className="contact-grid">
@@ -342,29 +357,29 @@ const AppContent = () => {
                     <Mail className="contact-icon" />
                     <div>
                       <h3>Email</h3>
-                      <p>support@optipress.io</p>
+                      <p>support@bilder-verkleinern.net</p>
                     </div>
                   </div>
                   <div className="contact-method">
                     <MessageSquare className="contact-icon" />
                     <div>
                       <h3>{t.contactTitle}</h3>
-                      <p>{t.contactEmail}</p>
+                      <p>support@bilder-verkleinern.net</p>
                     </div>
                   </div>
                 </div>
                 <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
                   <div className="form-group">
                     <label>{t.contactFormName}</label>
-                    <input type="text" placeholder="John Doe" />
+                    <input type="text" placeholder={t.contactFormNamePlaceholder} />
                   </div>
                   <div className="form-group">
                     <label>{t.contactFormEmail}</label>
-                    <input type="email" placeholder="john@example.com" />
+                    <input type="email" placeholder={t.contactFormEmailPlaceholder} />
                   </div>
                   <div className="form-group">
                     <label>{t.contactFormMessage}</label>
-                    <textarea rows={4} placeholder="How can we help?"></textarea>
+                    <textarea rows={4} placeholder={t.contactFormMessagePlaceholder}></textarea>
                   </div>
                   <button type="submit" className="submit-btn">{t.contactFormSend}</button>
                 </form>
@@ -382,9 +397,9 @@ const AppContent = () => {
         </div>
         <p>&copy; 2026 {t.brand}. {t.privacyStatement}</p>
         <div className="footer-badges">
-          <span className="badge">100% Client-Side</span>
-          <span className="badge">No Server Uploads</span>
-          <span className="badge">GDPR Compliant</span>
+          <span className="badge">{t.clientSideBadge}</span>
+          <span className="badge">{t.noServerUploadsBadge}</span>
+          <span className="badge">{t.gdprCompliantBadge}</span>
         </div>
       </footer>
     </div>
@@ -395,17 +410,30 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Redirect from root to /en or detected browser language */}
-        <Route path="/" element={<Navigate to="/en" replace />} />
+        {/* Redirect from root to /de or detected browser language */}
+        <Route path="/" element={<Navigate to="/de" replace />} />
         
         {/* Language-based Routing */}
         <Route path="/:lang/*" element={<AppContent />} />
         
         {/* Fallback for unknown routes */}
-        <Route path="*" element={<Navigate to="/en" replace />} />
+        <Route path="*" element={<Navigate to="/de" replace />} />
       </Routes>
     </BrowserRouter>
   );
 }
+
+
+export default App;
+based Routing */}
+        <Route path="/:lang/*" element={<AppContent />} />
+        
+        {/* Fallback for unknown routes */}
+        <Route path="*" element={<Navigate to="/de" replace />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
 
 export default App;

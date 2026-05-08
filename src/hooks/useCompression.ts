@@ -5,6 +5,7 @@ export interface CompressionSettings {
   maxSizeMB: number;
   maxWidthOrHeight: number;
   useWebWorker: boolean;
+  forumMode?: boolean;
 }
 
 export interface CompressionResult {
@@ -27,15 +28,55 @@ export const useCompression = () => {
     setError(null);
     
     try {
-      const options = {
-        maxSizeMB: settings.maxSizeMB,
-        maxWidthOrHeight: settings.maxWidthOrHeight,
-        useWebWorker: settings.useWebWorker,
-      };
+      let compressedBlob: Blob;
 
-      const compressedBlob = await imageCompression(file, options);
+      if (settings.forumMode) {
+        // Forum Mode Algorithm: Loop quality and scale until < 10KB
+        const targetSize = 10 * 1024; // 10KB
+        let quality = 0.8;
+        let scale = 1.0;
+        let currentBlob: Blob = file;
+
+        // Use a canvas-based approach for fine-grained control in a loop
+        const img = await imageCompression.drawFileInCanvas(file);
+        const [canvas] = img;
+
+        while (true) {
+          const tempCanvas = document.createElement('canvas');
+          const ctx = tempCanvas.getContext('2d')!;
+          tempCanvas.width = canvas.width * scale;
+          tempCanvas.height = canvas.height * scale;
+          ctx.drawImage(canvas, 0, 0, tempCanvas.width, tempCanvas.height);
+
+          currentBlob = await new Promise((resolve) => {
+            tempCanvas.toBlob((b) => resolve(b!), 'image/jpeg', quality);
+          });
+
+          if (currentBlob.size < targetSize) {
+            break;
+          }
+
+          if (quality > 0.2) {
+            quality -= 0.1;
+          } else {
+            scale *= 0.9;
+            quality = 0.8; // Reset quality for new scale
+          }
+
+          if (scale < 0.05) break; // Safety break
+        }
+        compressedBlob = currentBlob;
+      } else {
+        const options = {
+          maxSizeMB: settings.maxSizeMB,
+          maxWidthOrHeight: settings.maxWidthOrHeight,
+          useWebWorker: settings.useWebWorker,
+        };
+        compressedBlob = await imageCompression(file, options);
+      }
+
       const compressedFile = new File([compressedBlob], file.name, {
-        type: file.type,
+        type: 'image/jpeg',
         lastModified: Date.now(),
       });
 
@@ -54,7 +95,7 @@ export const useCompression = () => {
 
       setResult(res);
     } catch (err) {
-      setError('Failed to compress image. Please try again.');
+      setError('errorCompression');
       console.error(err);
     } finally {
       setIsCompressing(false);

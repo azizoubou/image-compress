@@ -22,6 +22,86 @@
   color: var(--text-main);
 }
 
+/* Forum Mode Toggle */
+.forum-mode-toggle {
+  margin-bottom: 2rem;
+  cursor: pointer;
+}
+
+.toggle-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: var(--radius-md);
+  transition: all 0.2s;
+}
+
+.toggle-box:hover {
+  border-color: var(--primary);
+  background: rgba(99, 102, 241, 0.03);
+}
+
+.toggle-box.active {
+  border-color: var(--primary);
+  background: rgba(99, 102, 241, 0.05);
+}
+
+.toggle-box svg {
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.toggle-box.active svg {
+  color: var(--primary);
+}
+
+.toggle-text {
+  flex: 1;
+}
+
+.toggle-text strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.toggle-text p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.switch {
+  width: 40px;
+  height: 20px;
+  background: #cbd5e1;
+  border-radius: 20px;
+  position: relative;
+  transition: background 0.2s;
+}
+
+.toggle-box.active .switch {
+  background: var(--primary);
+}
+
+.slider {
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.2s;
+}
+
+.toggle-box.active .slider {
+  transform: translateX(20px);
+}
+
 .setting-item {
   margin-bottom: 1.5rem;
 }

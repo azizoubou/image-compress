@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://optipress.io/sitemap.xml
+Sitemap: https://bilder-verkleinern.net/sitemap.xml
