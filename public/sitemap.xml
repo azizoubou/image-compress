@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://bilder-verkleinern.net/</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://bilder-verkleinern.net/de" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://bilder-verkleinern.net/en" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://bilder-verkleinern.net/ar" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://bilder-verkleinern.net/fr" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bilder-verkleinern.net/de" />
+  </url>
+  <url>
+    <loc>https://bilder-verkleinern.net/de</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bilder-verkleinern.net/en</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bilder-verkleinern.net/ar</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://bilder-verkleinern.net/fr</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>

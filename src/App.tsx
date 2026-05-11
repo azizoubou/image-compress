@@ -22,6 +22,7 @@ const SEO = ({ lang }: { lang: Language }) => {
       <html lang={lang} dir="ltr" />
       <title>{t.metaTitle}</title>
       <meta name="description" content={t.metaDescription} />
+      <meta name="keywords" content={t.metaKeywords} />
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
@@ -31,11 +32,11 @@ const SEO = ({ lang }: { lang: Language }) => {
       <meta property="og:image" content="https://bilder-verkleinern.net/og-image.png" />
 
       {/* Twitter */}
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={canonicalUrl} />
-      <meta property="twitter:title" content={t.metaTitle} />
-      <meta property="twitter:description" content={t.metaDescription} />
-      <meta property="twitter:image" content="https://bilder-verkleinern.net/og-image.png" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:url" content={canonicalUrl} />
+      <meta name="twitter:title" content={t.metaTitle} />
+      <meta name="twitter:description" content={t.metaDescription} />
+      <meta name="twitter:image" content="https://bilder-verkleinern.net/og-image.png" />
 
       <link rel="canonical" href={canonicalUrl} />
       
@@ -101,6 +102,16 @@ const AppContent = () => {
           "@type": "Question",
           "name": t.faqQ3,
           "acceptedAnswer": { "@type": "Answer", "text": t.faqA3 }
+        },
+        {
+          "@type": "Question",
+          "name": t.faqQ4,
+          "acceptedAnswer": { "@type": "Answer", "text": t.faqA4 }
+        },
+        {
+          "@type": "Question",
+          "name": t.faqQ5,
+          "acceptedAnswer": { "@type": "Answer", "text": t.faqA5 }
         }
       ]
     };
