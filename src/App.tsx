@@ -76,12 +76,15 @@ const AppContent = () => {
       "name": t.brand,
       "operatingSystem": "Any",
       "applicationCategory": "MultimediaApplication",
+      "applicationSubCategory": "Image Compressor",
       "offers": {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD"
       },
-      "description": t.metaDescription
+      "description": t.metaDescription,
+      "softwareVersion": "1.0.0",
+      "featureList": t.lightningFastDesc + ", " + t.privacyStatement
     };
 
     const faqSchema = {
@@ -319,6 +322,17 @@ const AppContent = () => {
                   ))}
                 </div>
               </section>
+
+              {currentLang === 'de' && (
+                <section className="seo-content-section">
+                  <h2>{t.seoContentTitle}</h2>
+                  <div className="seo-text-body">
+                    {t.seoContentText?.split('\n\n').map((para, index) => (
+                      <p key={index}>{para}</p>
+                    ))}
+                  </div>
+                </section>
+              )}
             </main>
           </>
         } />
@@ -401,16 +415,39 @@ const AppContent = () => {
       </Routes>
 
       <footer className="app-footer">
-        <div className="footer-links">
-          <Link to={`/${currentLang}/privacy`}>{t.privacyPolicy}</Link>
-          <Link to={`/${currentLang}/terms`}>{t.termsOfService}</Link>
-          <Link to={`/${currentLang}/contact`}>{t.contactUs}</Link>
+        <div className="footer-grid">
+          <div className="footer-column">
+            <h4>{t.brand}</h4>
+            <div className="footer-column-links">
+              <Link to={`/${currentLang}/`}>{currentLang === 'de' ? 'Bilder verkleinern online' : 'Image Compression'}</Link>
+              <Link to={`/${currentLang}/`}>{currentLang === 'de' ? 'Foto komprimieren' : 'Compress Photos'}</Link>
+              <Link to={`/${currentLang}/`}>{currentLang === 'de' ? 'Avatar verkleinern' : 'Resize Avatars'}</Link>
+            </div>
+          </div>
+          <div className="footer-column">
+            <h4>{currentLang === 'de' ? 'Anwendungsfälle' : 'Use Cases'}</h4>
+            <div className="footer-column-links">
+              <Link to={`/${currentLang}/`}>{currentLang === 'de' ? 'T4-Forum Bild-Upload' : 'Forum Image Upload'}</Link>
+              <Link to={`/${currentLang}/`}>{currentLang === 'de' ? 'Hausgarten Foto-Hilfe' : 'Garden Photo Help'}</Link>
+              <Link to={`/${currentLang}/`}>{currentLang === 'de' ? 'E-Mail Bilder optimieren' : 'Optimize Email Images'}</Link>
+            </div>
+          </div>
+          <div className="footer-column">
+            <h4>{t.contactUs}</h4>
+            <div className="footer-column-links">
+              <Link to={`/${currentLang}/privacy`}>{t.privacyPolicy}</Link>
+              <Link to={`/${currentLang}/terms`}>{t.termsOfService}</Link>
+              <Link to={`/${currentLang}/contact`}>{t.contactUs}</Link>
+            </div>
+          </div>
         </div>
-        <p>&copy; 2026 {t.brand}. {t.privacyStatement}</p>
-        <div className="footer-badges">
-          <span className="badge">{t.clientSideBadge}</span>
-          <span className="badge">{t.noServerUploadsBadge}</span>
-          <span className="badge">{t.gdprCompliantBadge}</span>
+        <div className="footer-bottom">
+          <p>&copy; 2026 {t.brand}. {t.privacyStatement}</p>
+          <div className="footer-badges">
+            <span className="badge">{t.clientSideBadge}</span>
+            <span className="badge">{t.noServerUploadsBadge}</span>
+            <span className="badge">{t.gdprCompliantBadge}</span>
+          </div>
         </div>
       </footer>
     </div>

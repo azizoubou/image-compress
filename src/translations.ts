@@ -2,10 +2,12 @@ export type Language = 'en' | 'de';
 
 export const translations = {
   de: {
-    metaTitle: "Bilder verkleinern online - Schnell, Kostenlos & 100% Privat",
-    metaDescription: "Bilder verkleinern online ohne Upload! Ideal für T4-Forum & Hausgarten. 100% Datenschutz durch lokale Kompression im Browser. Kostenlos JPG, PNG & WebP optimieren.",
-    metaKeywords: "Bilder verkleinern, Bilder komprimieren, JPG verkleinern, PNG optimieren, Foren Bilder Tool, T4-Forum, Hausgarten, Bildoptimierung online",
+    metaTitle: "Bilder verkleinern online - 100% Datenschutz & ohne Qualitätsverlust",
+    metaDescription: "Kostenlos Bilder verkleinern ohne Upload! Ideal für T4-Forum, Hausgarten & Avatare. 100% Datenschutz durch lokale Kompression im Browser. Jetzt JPG & PNG optimieren.",
+    metaKeywords: "Bilder verkleinern, Bilder komprimieren, JPG verkleinern, PNG optimieren, Foren Bilder Tool, T4-Forum, Hausgarten, Bildoptimierung online, 500KB limit, Avatar verkleinern",
     slogan: "Schnell, kostenlos & 100% Datenschutz für Ihre Bilder.",
+    seoContentTitle: "Bilder verkleinern – Schnell, kostenlos & mit maximalem Datenschutz",
+    seoContentText: "In der digitalen Welt von heute ist die Optimierung von Bilddateien unerlässlich. Ob für den Versand per E-Mail, das Hochladen in soziale Netzwerke oder die Einbindung in Webseiten – zu große Dateien führen oft zu Problemen. bilder-verkleinern.net bietet Ihnen eine professionelle Lösung, die Geschwindigkeit mit kompromisslosem Datenschutz vereint.\n\nBesonders in traditionsreichen Online-Communities wie dem T4-Forum oder bei Hausgarten.net stoßen Nutzer oft auf strikte Dateigrößenbeschränkungen. Wenn Sie eine Fahrzeugrestauration dokumentieren oder stolz Ihre Gartenprojekte präsentieren möchten, ist es frustrierend, wenn das System den Upload verweigert. Oft müssen Sie Ihr Foto komprimieren online, um die magische Grenze (z.B. das 500KB Limit) zu unterschreiten, ohne dass die Details Ihres Projekts verloren gehen.\n\nViele Forensysteme fordern extrem kleine Dateigrößen für Anhänge oder Profilbilder. Mit unserem Tool können Sie gezielt Ihre Bilder verkleinern auf 10KB oder 50KB. Durch die feinstufige Einstellung der Kompressionsrate und der Bildmaße behalten Sie die volle Kontrolle über das Endergebnis. Auch wenn Sie Ihren Avatar verkleinern müssen, hilft Ihnen bilder-verkleinern.net dabei, die optimalen Pixelmaße bei geringster Dateigröße zu erreichen.\n\nDer entscheidende Unterschied zu herkömmlichen Online-Konvertern: Ihre Bilder verlassen niemals Ihren Computer. Dank moderner Browser-Technologie erfolgt die gesamte Kompression „Client-Side“. Das bedeutet, dass der Prozess direkt in Ihrem Browser (lokal) ausgeführt wird. Kein Upload Ihrer sensiblen Fotos auf fremde Server bedeutet 100% Privatsphäre. Zudem sparen Sie Zeit und mobiles Datenvolumen, da kein Up- und Download der Rohdaten nötig ist.",
     howItWorks: "Wie es funktioniert",
     privacyCommitment: "Datenschutz-Garantie",
     privacyStatement: "Ihre Bilder verlassen nie Ihren Computer. Verarbeitung erfolgt 100% lokal.",
@@ -124,6 +126,8 @@ export const translations = {
     brand: "bilder-verkleinern.net",
     copyResult: "Copy Download Link",
     shareTool: "Share Tool",
+    seoContentTitle: "Image Compression - Fast, Free & Private",
+    seoContentText: "In today's digital world, optimizing image files is essential. Whether for sending via email, uploading to social networks, or integrating into websites - large files often lead to problems. bilder-verkleinern.net offers you a professional solution that combines speed with uncompromising privacy.",
     guideTitle: "Comprehensive Guide to Image Compression",
     guideIntro: "In today's digital world, image optimization is crucial for web performance and storage management. Our tool provides a professional-grade solution that combines speed, quality, and absolute privacy.",
     guideStep1Title: "1. Why Compress Images?",

@@ -247,31 +247,68 @@
   line-height: 1.6;
 }
 
+.seo-content-section {
+  margin: 6rem 0;
+  padding: 4rem;
+  background: white;
+  border-radius: var(--radius-xl);
+  border: 1px solid #e2e8f0;
+}
+
+.seo-content-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--text-main);
+}
+
+.seo-text-body p {
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+}
+
 .app-footer {
   margin-top: 6rem;
   padding: 4rem 2rem;
-  text-align: center;
   border-top: 1px solid #e2e8f0;
 }
 
-.footer-links {
-  display: flex;
-  justify-content: center;
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 3rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  text-align: left;
 }
 
-.footer-links button {
-  background: none;
-  border: none;
+.footer-column h4 {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+.footer-column-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-column-links a {
   color: var(--text-muted);
-  cursor: pointer;
-  font-size: 1rem;
+  text-decoration: none;
+  font-size: 0.95rem;
   transition: color 0.2s;
 }
 
-.footer-links button:hover {
+.footer-column-links a:hover {
   color: var(--primary);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid #f1f5f9;
 }
 
 .footer-badges {
@@ -380,14 +417,13 @@
   .app-header h1 {
     font-size: 2.25rem;
   }
-  .guide-section {
+  .guide-section, .seo-content-section {
     padding: 2rem;
   }
   .contact-grid {
     grid-template-columns: 1fr;
   }
-  .footer-links {
-    flex-direction: column;
-    gap: 1.5rem;
+  .footer-grid {
+    text-align: center;
   }
 }
